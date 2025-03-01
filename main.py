@@ -540,5 +540,43 @@ async def roast(ctx, member: discord.Member = None):
 
         for word in selected_roast:
             await ctx.send(word)
-           
+
+@client.event
+async def on_message(message):
+    global auto_reply, opponent, auto_react, reaction_emoji
+    
+    # Auto-reply functionality
+    if auto_reply and opponent and message.author == opponent and not message.author.bot:
+        # Example auto-replies
+        replies = [
+            "# Your Dad cried Because I Stole Your Mom",
+            "# Your Sister Sucks My Dick So Hard She Was Louding",
+            "# I Made Your Mom Call Me Daddy Last Night",
+            "# Your Mom Asked For Round Two Last Night",
+            "# Your Mom Loved My Sword Skills In Bed",
+            "# I Broke Your Mom's Back With My Moves",
+            "# Your Dad Ran Away Because I Slept With Your Mom",
+            "# I Turned Your Mom's Room Into A Battlefield",
+            "# I Turned Your Mom Into A Professional Moaner",
+            "# I Fucked Ur Momma With Japanese Katana"
+        ]
+        
+        # Send a random auto-reply from the list
+        import random
+        reply = random.choice(replies)
+        await message.channel.send(reply)
+    
+    # Auto-react functionality
+    if auto_react and reaction_emoji and message.author == client.user:
+        try:
+            await message.add_reaction(reaction_emoji)
+        except discord.errors.InvalidArgument:
+            print(f"Invalid emoji: {reaction_emoji}")
+    
+    await client.process_commands(message)
+
+# Global variables to manage the loop and group ID
+gc_loop_running = False
+gc_group = None
+
 client.run(token, bot=False)
