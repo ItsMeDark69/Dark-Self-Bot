@@ -18,7 +18,8 @@ print("""
   ____) |  | | | |__| | | \ \| |  | |  ____) | |____| |____| |    | |_) | |__| | | |       \  /   / /_ 
  |_____/   |_|  \____/|_|  \_\_|  |_| |_____/|______|______|_|    |____/ \____/  |_|        \/   |____|
                                                                                                        
-                                    Developer:DARK (Discord Username: darkevil.4ever
+                                    Developer:Sh4Dow
+                                    Discord Username: sh4dow.runz
                                         Github: https://github.com/ItsMeDark69                                                                
 
 """)
@@ -146,8 +147,8 @@ async def wizz(ctx):
         # Edit guild
         try:
             await ctx.guild.edit(
-                name='Server Got Nuked',
-                description='Server Fucked By DARK SELFBOT',
+                name='Server Raped By Sh4Dow',
+                description='Server Fucked By Sh4Dow Slefbot',
                 reason=reason,
                 icon=None,
                 banner=None
