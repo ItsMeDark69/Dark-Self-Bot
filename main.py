@@ -18,8 +18,8 @@ print("""
   ____) |  | | | |__| | | \ \| |  | |  ____) | |____| |____| |    | |_) | |__| | | |       \  /   / /_ 
  |_____/   |_|  \____/|_|  \_\_|  |_| |_____/|______|______|_|    |____/ \____/  |_|        \/   |____|
                                                                                                        
-                                    Developer:Sh4Dow
-                                    Discord Username: sh4dow.runz
+                                    Developer:Sh4Dow & Toxic Sanjay
+                                    Discord Username: sh4dow.runz & toxic_sanjay
                                         Github: https://github.com/ItsMeDark69                                                                
 
 """)
@@ -449,7 +449,25 @@ async def massban(ctx):
 
 @client.command()
 async def about(ctx):
-    await ctx.send("Best selfbot in discord and faster than everything :)")
+    about_message = (
+        "**Storm Selfbot V3**\n"
+        "-----------------------------\n"
+        "The ultimate selfbot for advanced Discord users.\n"
+        "Features:\n"
+        "- Best nuking commands to nuke fast.\n"
+        "- Advanced automation tools.\n"
+        "- Crypto and stock management.\n"
+        "- Moderation utilities.\n"
+        "- Fun and productivity tools.\n"
+        "- Lightning-fast performance.\n"
+        "\n"
+        "Developer: shadow.4real\n"
+        "Version: 3.0\n"
+        "Github: https://github.com/NotShadowX"
+        "\n"
+        "Disclaimer: Use responsibly and comply with Discord's ToS."
+    )
+    await ctx.send(about_message)
 
 @client.command()
 async def leave(ctx, guild_id: int):
