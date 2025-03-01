@@ -579,4 +579,28 @@ async def on_message(message):
 gc_loop_running = False
 gc_group = None
 
+@client.command()
+
+async def abuse(ctx):
+
+    await ctx.message.delete()  # Delete the user's command message
+
+    # List of new playful phrases/letters
+
+    phrases = [
+
+        "Nigga", "Faggot", "Cunt", "Bitch", "Asshole", "Bastard", 
+
+        "Dickhead", "Shithead", "Whore", "Slut", "Prick", "Pussy", 
+
+        "Motherfucker", "Cock", "Dildo", "Tits", "Son Of A Bitch", 
+
+        "Dumbass", "Retard", "Bimbo", "Pimp", "Stupid", "Jerk", 
+
+        "Idiot", "Wanker", "Bitchass"
+
+    ]
+
+    # Spam the phrases very quickly with a line-by-line display
+
 client.run(token, bot=False)
