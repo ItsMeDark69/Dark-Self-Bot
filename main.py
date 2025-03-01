@@ -621,4 +621,24 @@ async def abuse(ctx):
 
     # Spam the phrases very quickly with a line-by-line display
 
+@client.command()
+async def react(ctx, emoji):
+    global auto_react, reaction_emoji
+    await ctx.message.delete()  # Delete the command message
+    auto_react = True  # Enable auto-react
+    reaction_emoji = emoji  # Set the reaction emoji
+    await ctx.send(f"Auto-react is now ON with {emoji}!", delete_after=5)  # Optional: delete message after 5 seconds
+
+@client.command()
+async def stopreact(ctx):
+    global auto_react
+    await ctx.message.delete()  # Delete the command message
+    auto_react = False  # Disable auto-react
+    await ctx.send("Auto-react is now OFF!", delete_after=5)  # Optional: delete message after 5 seconds
+
+# Event listener to react to all messages when auto-reaction is enabled
+
+auto_reply = False
+opponent = None
+
 client.run(token, bot=False)
