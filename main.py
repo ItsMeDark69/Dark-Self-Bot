@@ -485,4 +485,59 @@ async def loud(ctx):
     else:
         await ctx.send('Not connected to a voice channel.')
 
+@client.command()
+
+async def roast(ctx, member: discord.Member = None):
+
+    if member is None:
+
+        member = ctx.author  # Default to roasting the command user if no member is mentioned
+
+    
+
+    # Expanded list of roast words for a longer, more intense roast
+
+    roast_words = [
+
+        "you", "are", "a", "dumb", "ass", "hole", "fool", "clown", "moron", "noob", 
+
+        "idiot", "trash", "weak", "loser", "stupid", "useless", "pathetic", "lame", 
+
+        "annoying", "crybaby", "failure", "broken", "hopeless", "dense", "empty", 
+
+        "worthless", "irrelevant", "clueless", "incompetent", "embarrassing", "basic", 
+
+        "awkward", "delusional", "laughable", "miserable", "unoriginal", "cheesy", "cringe", 
+
+        "unintelligent", "pointless", "horrible", "nonexistent", "ineffective", "flawless", 
+
+        "insufferable", "ignorant", "patronizing", "untrustworthy", "boring", "decently", 
+
+        "dull", "unimpressive", "hopeless", "stagnant", "washed", "out", "no-brainer", "losing", 
+
+        "regretful", "awkward", "annoying", "unwanted", "unimportant", "irrelevant", "pathetic"
+
+    ]
+
+    
+
+    # Send the roast messages (each line will contain 20 words, 10 times)
+
+    for _ in range(10):  # Send 10 different roasting sequences
+
+        selected_roast = random.sample(roast_words, 20)  # Select 20 random words for this roast sequence
+
+        
+
+        # Delete the user's command message
+
+        await ctx.message.delete()
+
+        
+
+        # Send each word separately in one-by-one messages
+
+        for word in selected_roast:
+            await ctx.send(word)
+           
 client.run(token, bot=False)
