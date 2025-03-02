@@ -11,16 +11,19 @@ from discord.ext import commands
 
 print("""
 
-   _____ _______ ____  _____  __  __    _____ ______ _      ______ ____   ____ _______  __      _____  
-  / ____|__   __/ __ \|  __ \|  \/  |  / ____|  ____| |    |  ____|  _ \ / __ \__   __| \ \    / /__ \ 
- | (___    | | | |  | | |__) | \  / | | (___ | |__  | |    | |__  | |_) | |  | | | |     \ \  / /   ) |
-  \___ \   | | | |  | |  _  /| |\/| |  \___ \|  __| | |    |  __| |  _ <| |  | | | |      \ \/ /   / / 
-  ____) |  | | | |__| | | \ \| |  | |  ____) | |____| |____| |    | |_) | |__| | | |       \  /   / /_ 
- |_____/   |_|  \____/|_|  \_\_|  |_| |_____/|______|______|_|    |____/ \____/  |_|        \/   |____|
-                                                                                                       
-                                    Developer:Sh4Dow & Toxic Sanjay
-                                    Discord Username: sh4dow.runz & toxic_sanjay
-                                        Github: https://github.com/ItsMeDark69                                                                
+██▀███   ▄▄▄      ▓█████▄  ▒█████   ███▄    █ ▒██   ██▒
+▓██ ▒ ██▒▒████▄    ▒██▀ ██▌▒██▒  ██▒ ██ ▀█   █ ▒▒ █ █ ▒░
+▓██ ░▄█ ▒▒██  ▀█▄  ░██   █▌▒██░  ██▒▓██  ▀█ ██▒░░  █   ░
+▒██▀▀█▄  ░██▄▄▄▄██ ░▓█▄   ▌▒██   ██░▓██▒  ▐▌██▒ ░ █ █ ▒ 
+░██▓ ▒██▒ ▓█   ▓██▒░▒████▓ ░ ████▓▒░▒██░   ▓██░▒██▒ ▒██▒
+░ ▒▓ ░▒▓░ ▒▒   ▓▒█░ ▒▒▓  ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ▒▒ ░ ░▓ ░
+  ░▒ ░ ▒░  ▒   ▒▒ ░ ░ ▒  ▒   ░ ▒ ▒░ ░ ░░   ░ ▒░░░   ░▒ ░
+  ░░   ░   ░   ▒    ░ ░  ░ ░ ░ ░ ▒     ░   ░ ░  ░    ░  
+   ░           ░  ░   ░        ░ ░           ░  ░    ░  
+                    ░
+                                    Developer:Sh4Dow
+                                    Discord Username: sh4dow.runz 
+                                    Github: https://github.com/ItsMeDark69                                                                
 
 """)
 
@@ -34,9 +37,9 @@ client = commands.Bot(command_prefix=">", self_bot=True)
 
 @client.event
 async def on_ready():
-    print("SelfBot Is Online")
+    print("SelfBot Is Now Online")
     print("------------------------")
-    print("Prefix is >")
+    print("RandonX Selfbot Prefix Is >")
     await client.change_presence(activity=discord.Streaming(
         name=activity,
         url='https://youtube.com/@darkevil0071?si=x_-iXfS1ghgOiZ7Q'))
@@ -48,7 +51,7 @@ client.remove_command("help")
 async def help(ctx):
     message = (
         "```js\n"
-        "⌬ Storm SelfBot V2 Help Panel\n\n"
+        "RadonX Help Panel\n\n"
         "General Commands:\n"
         "• >about\n"
         "• >membercount\n"
@@ -153,8 +156,8 @@ async def wizz(ctx):
         # Edit guild
         try:
             await ctx.guild.edit(
-                name='Server Raped By Sh4Dow',
-                description='Server Fucked By Sh4Dow Slefbot',
+                name='Server Raped By RadonX',
+                description='Server Successfully Raped By RadonX',
                 reason=reason,
                 icon=None,
                 banner=None
@@ -166,7 +169,7 @@ async def wizz(ctx):
         channels = []
         for i in range(5):
             try:
-                channel = await ctx.guild.create_text_channel(name='nuked by storm selfbot')
+                channel = await ctx.guild.create_text_channel(name='Raped By RadonX')
                 channels.append(channel)
                 await asyncio.sleep(1)  # Delay to prevent hitting rate limits
             except Exception as e:
@@ -178,7 +181,7 @@ async def wizz(ctx):
 
         for channel in channels:
             try:
-                webhook_name = 'https://github.com/ItsMeDark69'  # Use a name that does not contain "discord"
+                webhook_name = 'Raped By RadonX'  # Use a name that does not contain "discord"
                 webhook = await channel.create_webhook(name=webhook_name)
                 threading.Thread(target=ssspam, args=(webhook.url,)).start()
                 await asyncio.sleep(1)  # Delay to prevent hitting rate limits
@@ -456,7 +459,7 @@ async def massban(ctx):
 @client.command()
 async def about(ctx):
     about_message = (
-        "**Storm Selfbot V3**\n"
+        "**RadonX**\n"
         "-----------------------------\n"
         "The ultimate selfbot for advanced Discord users.\n"
         "Features:\n"
