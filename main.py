@@ -37,9 +37,9 @@ client = commands.Bot(command_prefix=">", self_bot=True)
 
 @client.event
 async def on_ready():
-    print("SelfBot Is Now Online")
+    print("RadonX Self-Bot Is Now Online")
     print("------------------------")
-    print("RandonX Selfbot Prefix Is >")
+    print("RandonX Self-bot Prefix Is >")
     await client.change_presence(activity=discord.Streaming(
         name=activity,
         url='https://youtube.com/@darkevil0071?si=x_-iXfS1ghgOiZ7Q'))
