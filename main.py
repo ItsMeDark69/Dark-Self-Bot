@@ -51,7 +51,7 @@ client.remove_command("help")
 async def help(ctx):
     message = (
         "```js\n"
-        "#         __ 𓆩RadonX Self-Bot𓆪 __  \n"
+        "      𓆩RadonX Self-Bot𓆪\n"
         "─── ◉ ɢᴇɴᴇʀᴀʟ ᴄᴏᴍᴍᴀɴᴅs ◉ ───\n"
         "▌▰ >about\n"
         "▌▰ >ping\n"
