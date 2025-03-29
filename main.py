@@ -67,6 +67,7 @@ async def help(ctx):
         "▌▰ >play [message]\n"
         "▌▰ >stream [message]\n"
         "▌▰ >remove status\n"
+        "▌▰ >l [message] <ladder>\n"
         "─── ◉ ɪʟʟᴇɢᴀʟ ᴄᴏᴍᴍᴀɴᴅs ◉ ───\n"
         "▌▰ >wizz\n"
         "▌▰ >spam [amount] [message]\n"
@@ -588,7 +589,7 @@ async def abuse(ctx):
     # Spam the phrases very quickly with a line-by-line display
 
 @client.command()
-async def ftype(ctx, *, text: str):
+async def l(ctx, *, text: str):
     await ctx.message.delete()  # Delete the user's command message
     words = text.split()  # Split the input message into words
 
