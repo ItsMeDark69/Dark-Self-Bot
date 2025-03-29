@@ -587,7 +587,7 @@ async def abuse(ctx):
 
     # Spam the phrases very quickly with a line-by-line display
 
-@bot.command()
+@client.command()
 async def ftype(ctx, *, text: str):
     await ctx.message.delete()  # Delete the user's command message
     words = text.split()  # Split the input message into words
