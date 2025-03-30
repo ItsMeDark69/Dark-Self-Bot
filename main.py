@@ -598,6 +598,7 @@ async def l(ctx, *, text: str):
 
 @client.command()
 async def review(ctx):
-    await ctx.send("discord.gg/tickets Please Join Listing Support Server And Click On **Ticket Creation** Then Scroll Down Until You See **Staff Feedback** Then Create The Ticket Then Bot Will Give You Some Questions Justt Fill It Then Wait For Managers/Supporters They Will Response You Soon That's It, Thank You")
+    await ctx.message.delete()  # Delete the user's message
+    await ctx.send("discord.gg/tickets Please Join The Listing Support Server And Click On **Ticket Creation**. Then, Scroll Down Until You See **Staff Feedback** And Create A Ticket. The Bot Will Give You Some Questions—Just Fill Them In And Wait For The Managers/Support Team To Respond. That's It! Thank You!")
 
 client.run(token, bot=False)
