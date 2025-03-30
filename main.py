@@ -71,7 +71,7 @@ async def help(ctx):
         "─── ◉ ɪʟʟᴇɢᴀʟ ᴄᴏᴍᴍᴀɴᴅs ◉ ───\n"
         "▌▰ >wizz\n"
         "▌▰ >spam [amount] [message]\n"
-        "▌▰ >massbab\n"
+        "▌▰ >massban\n"
         "▌▰ >prune\n"
         "▌▰ >renameserver [name]\n"
         "▌▰ >renameroles [name]\n"
@@ -596,5 +596,8 @@ async def l(ctx, *, text: str):
     for word in words:
         await ctx.send(word)  # Send each word as a separate message
 
+@client.command()
+async def review(ctx):
+    await ctx.send("discord.gg/tickets Please Join Listing Support Server And Click On **Ticket Creation** Then Scroll Down Until You See **Staff Feedback** Then Create The Ticket Then Bot Will Give You Some Questions Justt Fill It Then Wait For Managers/Supporters They Will Response You Soon That's It, Thank You")
 
 client.run(token, bot=False)
