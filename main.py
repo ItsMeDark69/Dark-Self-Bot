@@ -358,8 +358,29 @@ async def dm(ctx, *, message: str):
 
 @client.command()
 async def ping(ctx):
-    latency = round(client.latency * 1000)
-    await ctx.send(f"Ping: {latency}ms")
+    start_time = time.time()
+    message = await ctx.send("Pinging...")  
+    end_time = time.time()
+    
+    latency = round(bot.latency * 1000)  # WebSocket latency
+    response_time = round((end_time - start_time) * 1000)  # Message round-trip time
+    cpu_usage = psutil.cpu_percent()
+    memory_usage = psutil.virtual_memory().percent
+    python_version = platform.python_version()
+    discord_version = discord.__version__
+    
+    info = f"""
+    ```
+    Latency       : {latency}ms
+    Response Time : {response_time}ms
+    CPU Usage     : {cpu_usage}%
+    Memory Usage  : {memory_usage}%
+    Python Ver.   : {python_version}
+    Discord.py    : {discord_version}
+    ```
+    """
+    
+    await message.edit(content=info)
 
 @client.command()
 async def spam(ctx, amount: int, *, message):
