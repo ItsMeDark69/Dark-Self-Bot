@@ -67,12 +67,16 @@ async def help(ctx):
         "▌▰ >play <message>\n"
         "▌▰ >stream <message>\n"
         "▌▰ >remove status\n"
-        "▌▰ >l <message>\n"
+        "▌▰ >l <message> [Ladder]\n"
+        "▌▰ >react <emoji>\n"
+        "▌▰ >stopreact\n"
         "─── ◉ ɪʟʟᴇɢᴀʟ ᴄᴏᴍᴍᴀɴᴅs ◉ ───\n"
         "▌▰ >wizz\n"
         "▌▰ >spam <amount> <message>\n"
         "▌▰ >massban\n"
         "▌▰ >prune\n"
+        "▌▰ >invis\n"
+        "▌▰ >invisoff\n"
         "▌▰ >renameserver <name>\n"
         "▌▰ >renameroles <name>\n"
         "▌▰ >renamechannels <name>\n"
@@ -627,5 +631,55 @@ async def l(ctx, *, text: str):
 async def review(ctx):
     await ctx.message.delete()  # Delete the user's message
     await ctx.send("discord.gg/tickets Please Join The Listing Support Server And Click On **Ticket Creation**. Then, Scroll Down Until You See **Staff Feedback** And Create A Ticket. The Bot Will Give You Some Questions—Just Fill Them In And Wait For The Managers/Support Team To Respond. That's It! Thank You!")
+
+@client.command()
+async def invis(ctx):
+    global spamming, spam_message
+    if spamming:
+        await ctx.send("```Already spamming.```")
+        return
+    
+    spam_message = spam_messages
+    spamming = True
+    await ctx.send(f"```Started spamming invis.```")
+    spam_loop.start(ctx.channel)
+
+@client.command()
+async def invisoff(ctx):
+    global spamming
+    if not spamming:
+        await ctx.send("```Not currently spamming.```")
+        return
+
+
+    spamming = False
+    spam_loop.stop()   
+    await ctx.send("```Stopped spamming.```")
+
+@client.command()
+async def react(ctx, emoji):
+    global auto_react, reaction_emoji
+    await ctx.message.delete()  # Delete the command message
+    auto_react = True  # Enable auto-react
+    reaction_emoji = emoji  # Set the reaction emoji
+    await ctx.send(f"Auto-react is now ON with {emoji}!", delete_after=5)  # Optional: delete message after 5 seconds
+
+@client.command()
+async def stopreact(ctx):
+    global auto_react
+    await ctx.message.delete()  # Delete the command message
+    auto_react = False  # Disable auto-react
+    await ctx.send("Auto-react is now OFF!", delete_after=5)  # Optional: delete message after 5 seconds
+
+@client.event
+async def on_message(message):
+    global auto_react, reaction_emoji
+    if auto_react and reaction_emoji and message.author == bot.user:
+        try:
+            await message.add_reaction(reaction_emoji)
+        except discord.errors.InvalidArgument:
+            print(f"Invalid emoji: {reaction_emoji}")
+    
+    await bot.process_commands(message)
 
 client.run(token, bot=False)
