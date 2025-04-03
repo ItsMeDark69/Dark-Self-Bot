@@ -60,7 +60,6 @@ async def help(ctx):
         "▌▰ >leave <guild_id>\n"
         "▌▰ >join\n"
         "▌▰ >dm <message>\n"
-        "▌▰ >avatar <user>\n"
         "▌▰ >afk <reason>\n"
         "▌▰ >listen <message>\n"
         "▌▰ >purge <amount>\n"
@@ -206,40 +205,52 @@ async def ltc_balance(ctx, address):
 
 @client.command()
 async def serverinfo(ctx):
-    """Get information about the server."""
     guild = ctx.guild
-    name = guild.name
-    id = guild.id
-    member_count = guild.member_count
-    owner = guild.owner
-    created_at = guild.created_at.strftime('%Y-%m-%d %H:%M:%S')
-    await ctx.send(f"Server Name: {name}\nServer ID: {id}\nMembers: {member_count}\nOwner: {owner}\nCreated At: {created_at}")
 
+    server_info = (
+        "```"
+        "Server Information\n"
+        "-----------------------------\n"
+        f"Name          : {guild.name}\n"
+        f"Server ID     : {guild.id}\n"
+        f"Owner         : {guild.owner}\n"
+        f"Members       : {guild.member_count}\n"
+        f"Created On    : {guild.created_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
+        f"Region        : {guild.preferred_locale}\n"
+        f"Roles         : {len(guild.roles)}\n"
+        f"Channels      : {len(guild.channels)} (Text: {len(guild.text_channels)}, Voice: {len(guild.voice_channels)})\n"
+        f"Boosts        : {guild.premium_subscription_count} (Level {guild.premium_tier})\n"
+        "```"
+    )
+
+    await ctx.send(server_info)
+  
 @client.command()
 async def userinfo(ctx, member: discord.Member = None):
-    """Get information about a user."""
-    member = member or ctx.author
-    name = member.name
-    id = member.id
-    joined_at = member.joined_at.strftime('%Y-%m-%d %H:%M:%S')
-    roles = [role.name for role in member.roles]
-    await ctx.send(f"User Name: {name}\nUser ID: {id}\nJoined At: {joined_at}\nRoles: {', '.join(roles)}")
+    member = member or ctx.author  # Defaults to the command caller
 
+    user_info = (
+        "```"
+        "User Information\n"
+        "-----------------------------\n"
+        f"Name        : {member.name}#{member.discriminator}\n"
+        f"User ID     : {member.id}\n"
+        f"Nickname    : {member.nick if member.nick else 'None'}\n"
+        f"Created On  : {member.created_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
+        f"Joined On   : {member.joined_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
+        f"Roles       : {', '.join([role.name for role in member.roles if role.name != '@everyone']) or 'None'}\n"
+        f"Boosting    : {'Yes' if member.premium_since else 'No'}\n"
+        "```"
+    )
+
+    await ctx.send(user_info)
+  
 @client.command()
 async def servericon(ctx):
     """Get the server's icon URL."""
     guild = ctx.guild
     icon_url = guild.icon.url
     await ctx.send(f"Server Icon URL: {icon_url}")
-
-@client.command(aliases=['av', 'pfp'])
-async def avatar(ctx, user: discord.Member = None):
-    if user is None:
-        user = ctx.author
-
-    avatar_url = str(user.avatar_url_as(format='gif' if user.is_avatar_animated() else 'png'))
-
-    await ctx.send(f"```{user.name}'s pfp```\n[RadonX]({avatar_url})")
 
 @client.command()
 async def afk(ctx, *, reason="No reason provided"):
