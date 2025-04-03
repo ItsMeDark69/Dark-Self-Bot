@@ -232,12 +232,14 @@ async def servericon(ctx):
     icon_url = guild.icon.url
     await ctx.send(f"Server Icon URL: {icon_url}")
 
-@client.command()
-async def avatar(ctx, member: discord.Member = None):
-    """Get a user's avatar URL."""
-    member = member or ctx.author
-    avatar_url = member.avatar.url
-    await ctx.send(f"{member.name}'s Avatar URL: {avatar_url}")
+@client.command(aliases=['av', 'pfp'])
+async def avatar(ctx, user: discord.Member = None):
+    if user is None:
+        user = ctx.author
+
+    avatar_url = str(user.avatar_url_as(format='gif' if user.is_avatar_animated() else 'png'))
+
+    await ctx.send(f"```{user.name}'s pfp```\n[RadonX]({avatar_url})")
 
 @client.command()
 async def afk(ctx, *, reason="No reason provided"):
